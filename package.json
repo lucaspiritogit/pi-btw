@@ -1,0 +1,50 @@
+{
+  "name": "@lpirito/pi-btw",
+  "version": "0.1.0",
+  "description": "Ask a side question without derailing your Pi session.",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "node --test --experimental-strip-types test/*.test.ts",
+    "check": "npm run typecheck && npm run test",
+    "release:dry": "npm run check && npm publish --dry-run",
+    "release": "node scripts/release.mjs patch",
+    "release:minor": "node scripts/release.mjs minor",
+    "release:major": "node scripts/release.mjs major"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "agent-extension",
+    "side-chat",
+    "fork",
+    "tui"
+  ],
+  "author": "lucaspiritogit",
+  "license": "MIT",
+  "type": "module",
+  "pi": {
+    "extensions": [
+      "./src/btw.ts"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": ">=0.82.0 <1.0.0",
+    "@earendil-works/pi-coding-agent": ">=0.82.0 <1.0.0",
+    "@earendil-works/pi-tui": ">=0.82.0 <1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaspiritogit/pi-btw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucaspiritogit/pi-btw/issues"
+  },
+  "homepage": "https://github.com/lucaspiritogit/pi-btw#readme"
+}
