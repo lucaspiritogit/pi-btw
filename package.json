@@ -1,6 +1,6 @@
 {
   "name": "@lpirito/pi-btw",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Ask a side question without derailing your Pi session.",
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
