@@ -8,14 +8,14 @@ import {
   buildSessionContext,
   convertToLlm,
 } from "@earendil-works/pi-coding-agent";
-import { deriveBtwTitle } from "./by-the-way.ts";
-import { formatActivityStatus } from "./format.ts";
+import { deriveBtwTitle } from "./src/by-the-way.ts";
+import { formatActivityStatus } from "./src/format.ts";
 import {
   SideChatStore,
   type SideChat,
   type SideChatOptions,
-} from "./side-chat.ts";
-import { openSideChat, pickSideChat } from "./ui/side-chat.ts";
+} from "./src/side-chat.ts";
+import { openSideChat, pickSideChat } from "./src/ui/side-chat.ts";
 
 const SIDE_CHAT_INSTRUCTIONS = `This is a by-the-way side chat forked from the current conversation.
 Answer the user's side questions using the copied conversation as context.

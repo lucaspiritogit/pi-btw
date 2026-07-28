@@ -12,6 +12,7 @@
     "release:major": "node scripts/release.mjs major"
   },
   "files": [
+    "index.ts",
     "src"
   ],
   "keywords": [
@@ -27,7 +28,7 @@
   "type": "module",
   "pi": {
     "extensions": [
-      "./src/btw.ts"
+      "./index.ts"
     ]
   },
   "devDependencies": {
