@@ -1,5 +1,4 @@
-import { execSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 
 const bump = process.argv[2] ?? "patch";
 const notesIndex = process.argv.indexOf("--notes");
@@ -10,19 +9,15 @@ if (!["patch", "minor", "major"].includes(bump)) {
   process.exit(1);
 }
 
-execSync("npm run check", { stdio: "inherit" });
-execSync(`npm version ${bump} -m "chore(release): v%s"`, { stdio: "inherit" });
-
-const version = JSON.parse(readFileSync("package.json", "utf8")).version;
-const tag = `v${version}`;
-
-execSync("npm publish --access public", { stdio: "inherit" });
-
-const releaseCommand = notes
-  ? `gh release create ${tag} --title ${JSON.stringify(tag)} --notes ${JSON.stringify(notes)}`
-  : `gh release create ${tag} --title ${JSON.stringify(tag)} --generate-notes`;
-
-execSync(releaseCommand, { stdio: "inherit" });
-execSync("git push origin HEAD --tags", { stdio: "inherit" });
-
-console.log(`Released ${tag} to npm and GitHub.`);
+const argumentsList = [
+  "workflow",
+  "run",
+  "release.yml",
+  "--ref",
+  "main",
+  "--field",
+  `version_bump=${bump}`,
+];
+if (notes) argumentsList.push("--field", `release_notes=${notes}`);
+execFileSync("gh", argumentsList, { stdio: "inherit" });
+console.log("Release workflow queued on main.");

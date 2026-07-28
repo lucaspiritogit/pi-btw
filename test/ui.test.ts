@@ -4,4 +4,5 @@ import { sanitizeText } from "../src/ui/side-chat.ts";
 
 test("side-chat transcript sanitizes terminal control characters", () => {
   assert.equal(sanitizeText("\u001b[31mred\u001b[0m\ttext\u0007"), "red  text");
+  assert.equal(sanitizeText("\u009d52;c;clipboard\u009csafe"), "52;c;clipboardsafe");
 });

@@ -7,8 +7,8 @@ conversation has seen, but it has **no tools** — it cannot read or write files
 steer the main conversation. You ask, you read the answer, you close it. The main session is
 untouched.
 
-This `btw` implementation is forked from the Ben's setup: https://www.youtube.com/watch?v=5Qu2SkSQeBU
-but removes subagents functionality and other fixes so it can be replicated and used in other environments.
+This `btw` implementation was inspired by Ben's setup: https://www.youtube.com/watch?v=5Qu2SkSQeBU
+It removes subagent functionality and includes fixes so it can be reused across environments.
 
 ## Installation
 

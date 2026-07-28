@@ -13,14 +13,13 @@ import type { SideChat, SideChatOptions } from "../side-chat.ts";
 import { formatElapsed, SideChatStore } from "../side-chat.ts";
 
 const ANSI_PATTERN =
-  // eslint-disable-next-line no-control-regex
   /[\u001B\u009B][[\]()#;?]*(?:(?:(?:[a-zA-Z\d]*(?:;[a-zA-Z\d]*)*)?\u0007)|(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-nq-uy=><~]))/g;
 
 export function sanitizeText(text: string) {
   return text
     .replace(ANSI_PATTERN, "")
     .replaceAll("\t", "  ")
-    .replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, "");
+    .replace(/[\u0000-\u0008\u000b-\u001f\u007f-\u009f]/g, "");
 }
 
 function configuredKeys(
